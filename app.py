@@ -35,7 +35,31 @@ def search_recipes(query):
         'fillIngredients': True,
     }
 
-# Sending a GET request to the spoonacular API
+    # Sending a GET request to the spoonacular API
+    response = requests.get(url, params=params)
+    # if the API call is successful
+    if response.status_code == 200:
+        #parse the API response as JSON data
+        data = response.json()
+        # Return the list of recipes
+        return data ['results']
+        # if API call not successful
+    return []
+
+# Get the recipes information
+@app.route('/recipe/<int:recipe_id>')
+def view_recipe(recipe_id):
+    search_query = request.arg.get('search_query','')
+    url = f'https://api.spoonacular.com/recipes/{recipe_id}/information'
+    params = {
+        'apikey': API_KEY,
+    }
+    response = requests.get(url, params=params)
+    if response.status_code == 200:
+        recipe = response.json()
+        return render_template('result.html', recipe = recipe, search_query = search_query)
+    return "Recipe not found", 404
+
 
 if __name__ == '__main__':
     app.run(debug=True)
