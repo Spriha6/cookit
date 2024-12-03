@@ -1,35 +1,41 @@
-from flask import Flask, render_template, request
 import requests
+from urllib.parse import unquote
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
-# Spoonacular API configuration
+# API key
 API_KEY = "e1d8a4844b9f4e9588d3177c5b98adf2"
-BASE_URL = "https://api.spoonacular.com/recipes/complexSearch"
 
-@app.route('/')
+@app.route("/home")
 def home():
-    return render_template('home.html')  # Home page where the user inputs ingredients
+    return render_template("index.html", recipes = [], search_query = '')
 
-@app.route('/results', methods=['GET', 'POST'])
-def results():
+# Define the main roure for the APP
+@app.route('/', methods = ['GET', 'POST'])
+def index():
     if request.method == 'POST':
-        ingredients = request.form.get('ingredients').split(',')
-        params = {
-            "apiKey": API_KEY,
-            "includeIngredients": ','.join(ingredients),
-            "number": 5  # Limit to 5 results
-        }
-        response = requests.get(BASE_URL, params = params)
-        if response.status_code == 200:
-            recipes = response.json().get('results', [])
-            return render_template('results.html', recipes = recipes)
-        else:
-            # If the API call fails, print the error
-            return f"Error fetching data from Spoonacular API: {response.status_code}", 500
+        query = request.form.get('search_query', '')
+        recipes = search_recipes(query)
 
-            # In case of GET request or empty form, redirect back to home
-        return redirect(url_for('home'))
+        return render_template("index.html", recipes = recipes, search_query = query)
+    search_query = request.ars.get('search_query','')
+    decoded_search_query = unquote(search_query)
+    recipes = search_recipes(decoded_search_query)
+    return render_template('index.html, recipes = recipes, search_query = decoded_search_query)')
+
+def search_recipes(query):
+    url = f'https://api.spoonacular.com/recipes/complexSearch'
+    params = {
+        'apiKey': API_KEY,
+        'query': query,
+        'number': 10,
+        'instructionsRequired': True,
+        'addRecipeInformation': True,
+        'fillIngredients': True,
+    }
+
+# Sending a GET request to the spoonacular API
 
 if __name__ == '__main__':
     app.run(debug=True)

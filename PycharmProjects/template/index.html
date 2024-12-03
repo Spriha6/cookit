@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css"/>
+    <title> Recipe Finder </title>
+</head>
+<body>
+
+    <h1>Welcome to Cook it!</h1>
+    <form action="{{ url_for('submit_page') }}" method="POST">
+        <label for="ingredients">Enter ingredients (comma-separated):</label><br>
+        <input type="text" id="ingredients" name="ingredients" placeholder="e.g. tomato, cheese">
+        <p> <input type="submit" value = "SUBMIT"></p>
+    </form>
+</body>
+</html>
