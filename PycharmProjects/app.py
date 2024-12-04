@@ -71,7 +71,7 @@ def view_recipe(recipe_id):
     }
 
     # Send a GET request to the Spoonacular API to get the recipe information
-    response = requests.get(url, params=params)
+    response = requests.get(url, params = params)
     # If the API call is successful
     if response.status_code == 200:
         recipe = response.json()

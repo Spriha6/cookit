@@ -6,46 +6,94 @@
         body {
             text-align: center;
             margin: 40px;
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #e5eaf5;
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f5efe5;
         }
+
         h1, h2 {
+            font-family: 'Playfair Display', serif;
             margin-bottom: 20px;
-            color: #a28089
+            color: #eb3a39; /* Soft brown */
+            font-size: 36px; /* Larger size for the heading */
         }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            text-align: left;
+            margin-bottom: 10px;
+            font-size: 28px;
+            color: #6b6a39; /* Olive green for section titles */
+        }
+
         ul, ol {
+            font-family: 'Open Sans', sans-serif;
             text-align: left;
             list-style-position: inside;
             padding-left: 20px;
+            font-size: 18px;
+            color: #3b3a39;
         }
+
         img {
             display: block;
             margin: 0 auto;
             max-width: 300px;
             margin-bottom: 20px;
         }
+
         a {
+            font-family: 'Open Sans', sans-serif;
             display: inline-block;
             margin-top: 10px;
-            color: blue;
+            color: #eb3a39; /* Red color for links */
             text-decoration: underline;
+            font-size: 18px;
         }
+
         .recipe-details {
             max-width: 700px;
             margin: 0 auto;
             border: 2px solid #ccc;
             padding: 20px;
+            background-color: #fff; /* White background for contrast */
+            font-size: 16px;
+            color: #3b3a39; /* Dark text color */
         }
-        .section-title {
-            text-align: left;
-            margin-bottom: 10px;
+
+        /* Back button styling */
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #eb3a39; /* Red button */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
         }
-        .ingredient-list, .instruction-list {
-            text-align: left;
+
+        .back-button:hover {
+            background-color: #c42f2d; /* Darker red on hover */
         }
+
+        .back-button i {
+            margin-right: 8px;
+        }
+
     </style>
 </head>
 <body>
+
+    <!-- Back to Home Button with Arrow -->
+    <a href="/" class="back-button">
+        <i class="fas fa-arrow-left"></i> Back to Home
+    </a>
+
     <div class="recipe-details">
         <h1>{{ recipe.title }}</h1>
 
@@ -71,7 +119,7 @@
             <li>{{ step.step }}</li>
             {% endfor %}
         </ol>
-        <a href="/?search_query={{ search_query }}">Back to search results</a>
+
     </div>
 </body>
 </html>

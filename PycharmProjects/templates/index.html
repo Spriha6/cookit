@@ -2,107 +2,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Recipe Application</title>
+    <title>Cook It!</title>
     <style>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+        h1, .recipe-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            color: #eb3a39;
+        }
+
+        body, label, .recipe-description, input[type="text"], a {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 18px;
+            color: #3b3a39;
+        }
+
         body {
             text-align: center;
             margin: 40px;
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #d1bfa7;
-        }
-        .search-bar input[type="text"] {
-            border: 2px solid #ccc; /* Light grey border */
-            background-color: #fff; /* White background */
-            padding: 15px 20px; /* Larger padding */
-            border-radius: 8px; /* Rounded corners */
-            width: 300px; /* Increased width */
-            font-size: 18px; /* Larger text size */
-            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); /* Slight shadow for better visibility */
-        }
-        .search-bar input[type="text"]:focus {
-            outline: none; /* Remove default focus outline */
-            border: 2px solid #d0bdf4; /* Blue border on focus */
-            box-shadow: 0 0 10px #d0bdf4; /* Subtle blue shadow */
+            font-family: 'Playfair Display', serif;
+            background-color: #f5efe5;
         }
 
         h1 {
-            margin-bottom: 20px;
-            color: #5cbdb9
+            font-size: 48px;
+            font-weight: bold;
+            color: #eb3a39;
+            line-height: 1.2;
         }
+
         form {
             margin-bottom: 20px;
         }
+
         ul {
             list-style: none;
             padding: 0;
         }
+
         li {
             display: inline-block;
             text-align: center;
             margin: 10px;
             width: 200px;
         }
+
         .recipe-title {
-            font-size: 16px;
-            line-height: 1.2;
-            max-height: 3.6em;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: normal;
-            color: #a28089;
-            margin: 10px 0;
-        }
-        a:hover {
-            background-color: #45a049; /* Darker green on hover */
+            font-size: 22px;
+            font-weight: 600;
+            color: #6b6a39;
         }
 
         img {
-            display: block;
+            display: inline-block;
             margin: 0 auto;
             max-width: 200px;
         }
+
         a {
-            display: inline-block;
-            margin-top: 10px;
-            color: #fbe3e8;
+            font-size: 18px;
+            font-weight: 500;
+            color: #eb3a39;
             text-decoration: underline;
         }
+
+        /* Adds the red underline when cursor is on the picture */
+        a:hover {
+            background-color: #eb3a39;
+        }
+
         .recipe-details {
             max-width: 600px;
             margin: 0 auto;
             border: 2px solid #ccc;
             padding: 20px;
         }
+
         .section-title {
             text-align: left;
             margin-bottom: 10px;
         }
-        .ingredient-list, .instrction-list {
-            text-align: left;
+
+
+        /* Enhancing the label and input */
+        label {
+            font-size: 22px;
+            color: #eb3a39; /* Brighter red */
+            margin-bottom: 10px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 70%;
+            padding: 15px 20px;
+            font-size: 18px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        input[type="submit"] {
+            padding: 12px 25px;
+            font-size: 18px;
+            color: white;
+            background-color: #6b6a39; /* Olive green */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #5a5a30; /* Darker olive green */
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to Cook it!</h1>
+    <h1>COOK IT!</h1>
     <form method="POST" action="/">
-        <label for = "Ingredients"> Enter ingredients to search for recipes (comma-seperated):</label><br>
-        <input type="text" name="search_query" placeholder="Search for recipes">
+        <label for = "Ingredients"> Enter ingredients to search (comma-seperated):</label><br>
+        <input type="text" name="search_query" placeholder="eg.- tomato, cheese">
         <input type="submit" value="Search">
     </form>
 
     <!-- Check of recipes are available-->
-    {% if recipes%}
+    {% if recipes %}
     <ul>
         {% for recipe in recipes %}
         <li>
             <h3 class="recipe-title">{{ recipe.title }}</h3>
+
             {% if recipe.image %}
-            <img src="{{ recipe.image }}" alt="{{ recipe.title }}">
+            <button style="border: none; background: none; padding: 0;">
+                <a href="{{ url_for('view_recipe', recipe_id=recipe.id, search_query=search_query) }}">
+                <img src="{{ recipe.image }}" alt="{{ recipe.title }}">
+                </a>
+            </button>
             {% endif %}
-            <a href="{{ url_for('view_recipe', recipe_id=recipe.id, search_query=search_query) }}">View</a>
+
         </li>
         {% endfor %}
     </ul>
+
     <!-- If no recipes are found -->
     {% else %}
     <p>No recipes found.</p>
