@@ -1,139 +1,200 @@
+START HTML DOCUMENT
 
+    SET document language to English
+
+    HEAD SECTION:
+        SET the document title to "Cook It!"
+        LINK Google Fonts for 'Playfair Display' and 'Open Sans'
+        DEFINE CSS styles:
+            SET general font-family and font-size for text elements
+            DEFINE styles for headings (h1, .recipe-title)
+            DEFINE body styling (background color, text alignment, margin)
+            DEFINE form styles (spacing, input fields)
+            DEFINE list styling (remove default list style, inline display for list items)
+            DEFINE styles for links (font size, color, hover effect)
+            DEFINE styles for recipe details container (max-width, margin, border)
+            DEFINE label and input field styling (font size, color, padding)
+            DEFINE submit button styling (padding, background color, hover effect)
+
+    BODY SECTION:
+        DISPLAY main heading "COOK IT!"
+
+        DISPLAY form to enter ingredients:
+            DISPLAY label for "Enter ingredients to search"
+            DISPLAY text input field for the search query
+            DISPLAY submit button to search
+
+        IF recipes are available:
+            CREATE an unordered list (ul) to display recipes:
+                FOR each recipe in the recipe list:
+                    DISPLAY recipe title
+                    IF recipe has an image:
+                        DISPLAY recipe image with a clickable link to view the recipe
+                    END IF
+                END FOR
+        ELSE:
+            DISPLAY message "No recipes found."
+
+END HTML DOCUMENT
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Set the document title to "Cook It!" -->
     <title>Cook It!</title>
-    <style>
 
+    <!-- Link to Google Fonts for 'Playfair Display' and 'Open Sans' -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
+    <style>
+        /* General styling for text elements */
         h1, .recipe-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 48px;
-            color: #eb3a39;
+            font-family: 'Playfair Display', serif; /* Use serif font for headings */
+            font-size: 48px; /* Set font size for headings */
+            color: #eb3a39; /* Red color for headings */
         }
 
+        /* Set font family and color for body text, labels, and inputs */
         body, label, .recipe-description, input[type="text"], a {
-            font-family: 'Open Sans', sans-serif;
-            font-size: 18px;
-            color: #3b3a39;
+            font-family: 'Open Sans', sans-serif; /* Sans-serif font for body text */
+            font-size: 18px; /* Set font size for text */
+            color: #3b3a39; /* Dark color for text */
         }
 
+        /* Body styling */
         body {
-            text-align: center;
-            margin: 40px;
-            font-family: 'Playfair Display', serif;
-            background-color: #f5efe5;
+            text-align: center; /* Center align text in the body */
+            margin: 40px; /* Add margin around the body */
+            font-family: 'Playfair Display', serif; /* Set a serif font for the body */
+            background-color: #f5efe5; /* Light background color for the body */
         }
 
+        /* Styling for the main heading (h1) */
         h1 {
-            font-size: 48px;
-            font-weight: bold;
-            color: #eb3a39;
-            line-height: 1.2;
+            font-size: 48px; /* Set font size for the heading */
+            font-weight: bold; /* Make the heading bold */
+            color: #eb3a39; /* Set red color for the heading */
+            line-height: 1.2; /* Adjust line height for the heading */
         }
 
+        /* Form styling */
         form {
-            margin-bottom: 20px;
+            margin-bottom: 20px; /* Add bottom margin for form */
         }
 
+        /* Styling for unordered lists */
         ul {
-            list-style: none;
-            padding: 0;
+            list-style: none; /* Remove default list styles */
+            padding: 0; /* Remove padding from the list */
         }
 
+        /* Styling for each list item (recipe) */
         li {
-            display: inline-block;
-            text-align: center;
-            margin: 10px;
-            width: 200px;
+            display: inline-block; /* Display list items inline */
+            text-align: center; /* Center-align content in the list items */
+            margin: 10px; /* Add margin around each list item */
+            width: 200px; /* Set fixed width for each list item */
         }
 
+        /* Recipe title styling */
         .recipe-title {
-            font-size: 22px;
-            font-weight: 600;
-            color: #6b6a39;
+            font-size: 22px; /* Set font size for recipe titles */
+            font-weight: 600; /* Make the title bold */
+            color: #6b6a39; /* Olive color for recipe titles */
         }
 
+        /* Styling for images */
         img {
-            display: inline-block;
-            margin: 0 auto;
-            max-width: 200px;
+            display: inline-block; /* Display image inline */
+            margin: 0 auto; /* Center the image */
+            max-width: 200px; /* Set max width for images */
         }
 
+        /* Styling for links */
         a {
-            font-size: 18px;
-            font-weight: 500;
-            color: #eb3a39;
-            text-decoration: underline;
+            font-size: 18px; /* Font size for links */
+            font-weight: 500; /* Font weight for links */
+            color: #eb3a39; /* Red color for links */
+            text-decoration: underline; /* Underline links */
         }
 
-        /* Adds the red underline when cursor is on the picture */
+        /* Hover effect for links */
         a:hover {
-            background-color: #eb3a39;
+            background-color: #eb3a39; /* Red background on hover */
         }
 
+        /* Styling for recipe details container */
         .recipe-details {
-            max-width: 600px;
-            margin: 0 auto;
-            border: 2px solid #ccc;
-            padding: 20px;
+            max-width: 600px; /* Set max width for recipe details */
+            margin: 0 auto; /* Center the container */
+            border: 2px solid #ccc; /* Border around the container */
+            padding: 20px; /* Padding inside the container */
         }
 
+        /* Styling for section titles */
         .section-title {
-            text-align: left;
-            margin-bottom: 10px;
+            text-align: left; /* Align section titles to the left */
+            margin-bottom: 10px; /* Add space below section titles */
         }
 
-        /* Enhancing the label and input */
+        /* Label styling */
         label {
-            font-size: 22px;
-            color: #eb3a39; /* Brighter red */
-            margin-bottom: 10px;
-            display: inline-block;
-            font-weight: bold;
+            font-size: 22px; /* Font size for labels */
+            color: #eb3a39; /* Brighter red color for labels */
+            margin-bottom: 10px; /* Add space below labels */
+            display: inline-block; /* Display labels inline */
+            font-weight: bold; /* Make labels bold */
         }
 
+        /* Styling for input text fields */
         input[type="text"] {
-            width: 70%;
-            padding: 15px 20px;
-            font-size: 18px;
-            border: 2px solid #ccc;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
+            width: 70%; /* Set width of the text input field */
+            padding: 15px 20px; /* Add padding inside the input field */
+            font-size: 18px; /* Set font size for input text */
+            border: 2px solid #ccc; /* Border around input field */
+            border-radius: 10px; /* Round the corners of the input field */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow effect to input field */
+            margin-bottom: 20px; /* Add margin below input field */
         }
 
+        /* Styling for submit button */
         input[type="submit"] {
-            padding: 12px 25px;
-            font-size: 18px;
-            color: white;
-            background-color: #6b6a39; /* Olive green */
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            padding: 12px 25px; /* Add padding inside the button */
+            font-size: 18px; /* Set font size for the button text */
+            color: white; /* Set text color to white */
+            background-color: #6b6a39; /* Olive green background color for the button */
+            border: none; /* Remove border around the button */
+            border-radius: 5px; /* Round corners of the button */
+            cursor: pointer; /* Change cursor to pointer on hover */
         }
 
+        /* Hover effect for submit button */
         input[type="submit"]:hover {
-            background-color: #5a5a30; /* Darker olive green */
+            background-color: #5a5a30; /* Darker olive green on hover */
         }
+
     </style>
 </head>
 <body>
+    <!-- Main Heading -->
     <h1>COOK IT!</h1>
+
+    <!-- Search form for entering ingredients -->
     <form method="POST" action="/">
-        <label for = "Ingredients"> Enter ingredients to search (comma-seperated):</label><br>
+        <label for="Ingredients"> Enter ingredients to search (comma-separated):</label><br>
         <input type="text" name="search_query" placeholder="eg.- tomato, cheese">
         <input type="submit" value="Search">
     </form>
 
-    <!-- Check of recipes are available-->
+    <!-- Check if recipes are available -->
     {% if recipes %}
+        <!-- Display a list of recipes -->
         <ul>
             {% for recipe in recipes %}
             <li>
+                <!-- Display recipe title -->
                 <h3 class="recipe-title">{{ recipe.title }}</h3>
 
+                <!-- Display recipe image and link to detailed view -->
                 {% if recipe.image %}
                 <button style="border: none; background: none; padding: 0;">
                     <a href="{{ url_for('view_recipe', recipe_id=recipe.id, search_query=search_query) }}">
@@ -141,11 +202,10 @@
                     </a>
                 </button>
                 {% endif %}
-
             </li>
             {% endfor %}
         </ul>
-    <!-- If no recipes are found -->
+    <!-- If no recipes found -->
     {% else %}
     <p>No recipes found.</p>
     {% endif %}

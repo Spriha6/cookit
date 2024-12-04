@@ -1,122 +1,172 @@
+/* START HTML DOCUMENT
+
+    SET document language to English
+
+    HEAD SECTION:
+        SET document title to recipe title
+        DEFINE CSS styles:
+            SET body styles (center text, margin, font-family, background color)
+            SET heading styles (h1 and h2 with font-family, margin, color, font-size)
+            SET section title styles (section-title with text alignment, margin, font size, color)
+            SET list styles (unordered and ordered lists with padding, font size, color)
+            SET image styles (center image, max width, bottom margin)
+            SET link styles (color, underline, margin, font size)
+            DEFINE styling for recipe details (max-width, border, padding, background color)
+            DEFINE back button styles (position, padding, background color, font size, cursor style)
+            DEFINE back button hover styles (dark red background)
+
+    BODY SECTION:
+        DISPLAY back button with link to home page
+        DISPLAY recipe title
+
+        IF recipe has an image:
+            SHOW image with source as recipe image URL
+
+        DISPLAY ingredients section title
+        CREATE an unordered list for ingredients:
+            FOR each ingredient in recipe's extended ingredients:
+                ADD each ingredient to the list
+
+        DISPLAY instructions section title
+        CREATE an ordered list for instructions:
+            FOR each step in the recipe's analyzed instructions:
+                ADD each instruction step to the list
+
+END HTML DOCUMENT */
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Set the document title to the recipe's title -->
     <title>{{ recipe.title }}</title>
+
     <style>
+        /* General body styling */
         body {
-            text-align: center;
-            margin: 40px;
-            font-family: 'Open Sans', sans-serif;
-            background-color: #f5efe5;
+            text-align: center; /* Center-align text */
+            margin: 40px; /* Add margin around the body */
+            font-family: 'Open Sans', sans-serif; /* Set font for body text */
+            background-color: #f5efe5; /* Light background color */
         }
 
+        /* Styling for headings (h1, h2) */
         h1, h2 {
-            font-family: 'Playfair Display', serif;
-            margin-bottom: 20px;
-            color: #eb3a39; /* Soft brown */
-            font-size: 36px; /* Larger size for the heading */
+            font-family: 'Playfair Display', serif; /* Serif font for headings */
+            margin-bottom: 20px; /* Add space below headings */
+            color: #eb3a39; /* Red color for headings */
+            font-size: 36px; /* Font size for the main title */
         }
 
+        /* Styling for section titles (Ingredients, Instructions) */
         .section-title {
-            font-family: 'Playfair Display', serif;
-            text-align: left;
-            margin-bottom: 10px;
-            font-size: 28px;
-            color: #6b6a39; /* Olive green for section titles */
+            font-family: 'Playfair Display', serif; /* Serif font for section titles */
+            text-align: left; /* Align section titles to the left */
+            margin-bottom: 10px; /* Add space below section titles */
+            font-size: 28px; /* Font size for section titles */
+            color: #6b6a39; /* Olive color for section titles */
         }
 
+        /* Styling for list items (Ingredients, Instructions) */
         ul, ol {
-            font-family: 'Open Sans', sans-serif;
-            text-align: left;
-            list-style-position: inside;
-            padding-left: 20px;
-            font-size: 18px;
-            color: #3b3a39;
+            font-family: 'Open Sans', sans-serif; /* Sans-serif font for lists */
+            text-align: left; /* Align list items to the left */
+            list-style-position: inside; /* Indent list items */
+            padding-left: 20px; /* Padding for the list */
+            font-size: 18px; /* Font size for list items */
+            color: #3b3a39; /* Dark color for list items */
         }
 
+        /* Styling for images */
         img {
-            display: block;
-            margin: 0 auto;
-            max-width: 300px;
-            margin-bottom: 20px;
+            display: block; /* Make image a block-level element */
+            margin: 0 auto; /* Center image horizontally */
+            max-width: 300px; /* Limit the maximum width of the image */
+            margin-bottom: 20px; /* Add space below the image */
         }
 
+        /* Styling for links (Back button) */
         a {
-            font-family: 'Open Sans', sans-serif;
-            display: inline-block;
-            margin-top: 10px;
+            font-family: 'Open Sans', sans-serif; /* Set font for links */
+            display: inline-block; /* Make the link an inline block */
+            margin-top: 10px; /* Add margin at the top of the link */
             color: #eb3a39; /* Red color for links */
-            text-decoration: underline;
-            font-size: 18px;
+            text-decoration: underline; /* Underline the link */
+            font-size: 18px; /* Font size for the link */
         }
 
+        /* Styling for recipe details container */
         .recipe-details {
-            max-width: 700px;
-            margin: 0 auto;
-            border: 2px solid #ccc;
-            padding: 20px;
-            background-color: #fff; /* White background for contrast */
-            font-size: 16px;
-            color: #3b3a39; /* Dark text color */
+            max-width: 700px; /* Set a maximum width for the recipe details container */
+            margin: 0 auto; /* Center the container horizontally */
+            border: 2px solid #ccc; /* Add a border around the container */
+            padding: 20px; /* Add padding inside the container */
+            background-color: #fff; /* White background for the container */
+            font-size: 16px; /* Set font size for the recipe details */
+            color: #3b3a39; /* Dark text color for readability */
         }
 
-        /* Back button styling */
+        /* Styling for the back button */
         .back-button {
-            position: fixed;
+            position: fixed; /* Fix the button's position to the top-left corner */
             top: 20px;
             left: 20px;
-            display: flex;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: #eb3a39; /* Red button */
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
+            display: flex; /* Use flexbox for the button layout */
+            align-items: center; /* Align items vertically in the center */
+            padding: 10px 20px; /* Padding for the button */
+            background-color: #eb3a39; /* Red background for the button */
+            color: white; /* White text color */
+            text-decoration: none; /* Remove underline from the link */
+            border-radius: 5px; /* Rounded corners for the button */
+            font-size: 16px; /* Font size for the button text */
+            font-weight: 600; /* Make the font bold */
+            cursor: pointer; /* Show pointer cursor on hover */
         }
 
+        /* Styling for back button hover effect */
         .back-button:hover {
-            background-color: #c42f2d; /* Darker red on hover */
+            background-color: #c42f2d; /* Darken the background color on hover */
         }
 
+        /* Add margin to the icon in the back button */
         .back-button i {
-            margin-right: 8px;
+            margin-right: 8px; /* Add space between icon and text */
         }
 
     </style>
 </head>
 <body>
 
-    <!-- Back to Home Button with Arrow -->
+    <!-- Back to Home Button with an Arrow -->
     <a href="/" class="back-button">
-        <i class="fas fa-arrow-left"></i><
+        <i class="fas fa-arrow-left"></i> Back to home
     </a>
 
+    <!-- Recipe details container -->
     <div class="recipe-details">
+        <!-- Display recipe title -->
         <h1>{{ recipe.title }}</h1>
 
-        <!-- Display the recipe image if available -->
+        <!-- Display recipe image if available -->
         {% if recipe.image %}
             <img src="{{ recipe.image }}" alt="{{ recipe.title }}">
         {% endif %}
 
         <!-- Ingredients section -->
         <h2 class="section-title">Ingredients</h2>
-        <!-- Create an unordered list for displaying the ingredients -->
+        <!-- Unordered list to display ingredients -->
         <ul class="ingredient-list">
-            <!-- Loop through each ingredient in the recipe's extendedIngredients -->
+            <!-- Loop through each ingredient in the recipe's extended ingredients -->
             {% for ingredient in recipe.extendedIngredients %}
-            <li>{{ ingredient.original }}</li>
+                <li>{{ ingredient.original }}</li> <!-- List each ingredient -->
             {% endfor %}
         </ul>
 
         <!-- Instructions Section -->
         <h2 class="section-title">Instructions</h2>
+        <!-- Ordered list to display instructions -->
         <ol class="instruction-list">
+            <!-- Loop through each step in the recipe's analyzed instructions -->
             {% for step in recipe.analyzedInstructions[0].steps %}
-            <li>{{ step.step }}</li>
+                <li>{{ step.step }}</li> <!-- List each instruction step -->
             {% endfor %}
         </ol>
 
