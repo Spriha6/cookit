@@ -1,41 +1,4 @@
-START HTML DOCUMENT
 
-    SET document language to English
-
-    HEAD SECTION:
-        SET the document title to "Cook It!"
-        LINK Google Fonts for 'Playfair Display' and 'Open Sans'
-        DEFINE CSS styles:
-            SET general font-family and font-size for text elements
-            DEFINE styles for headings (h1, .recipe-title)
-            DEFINE body styling (background color, text alignment, margin)
-            DEFINE form styles (spacing, input fields)
-            DEFINE list styling (remove default list style, inline display for list items)
-            DEFINE styles for links (font size, color, hover effect)
-            DEFINE styles for recipe details container (max-width, margin, border)
-            DEFINE label and input field styling (font size, color, padding)
-            DEFINE submit button styling (padding, background color, hover effect)
-
-    BODY SECTION:
-        DISPLAY main heading "COOK IT!"
-
-        DISPLAY form to enter ingredients:
-            DISPLAY label for "Enter ingredients to search"
-            DISPLAY text input field for the search query
-            DISPLAY submit button to search
-
-        IF recipes are available:
-            CREATE an unordered list (ul) to display recipes:
-                FOR each recipe in the recipe list:
-                    DISPLAY recipe title
-                    IF recipe has an image:
-                        DISPLAY recipe image with a clickable link to view the recipe
-                    END IF
-                END FOR
-        ELSE:
-            DISPLAY message "No recipes found."
-
-END HTML DOCUMENT
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,135 +7,118 @@ END HTML DOCUMENT
 
     <!-- Link to Google Fonts for 'Playfair Display' and 'Open Sans' -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-
     <style>
         /* General styling for text elements */
         h1, .recipe-title {
-            font-family: 'Playfair Display', serif; /* Use serif font for headings */
-            font-size: 48px; /* Set font size for headings */
-            color: #eb3a39; /* Red color for headings */
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            color: #E7717D; /* Pinkish red */
         }
 
-        /* Set font family and color for body text, labels, and inputs */
         body, label, .recipe-description, input[type="text"], a {
-            font-family: 'Open Sans', sans-serif; /* Sans-serif font for body text */
-            font-size: 18px; /* Set font size for text */
-            color: #3b3a39; /* Dark color for text */
+            font-family: 'Open Sans', sans-serif;
+            font-size: 18px;
+            color: #7E685A; /* Brownish taupe */
         }
 
-        /* Body styling */
         body {
-            text-align: center; /* Center align text in the body */
-            margin: 40px; /* Add margin around the body */
-            font-family: 'Playfair Display', serif; /* Set a serif font for the body */
-            background-color: #f5efe5; /* Light background color for the body */
+            text-align: center;
+            margin: 40px;
+            font-family: 'Playfair Display', serif;
+            background-color: #F4F5F6;
         }
 
-        /* Styling for the main heading (h1) */
         h1 {
-            font-size: 48px; /* Set font size for the heading */
-            font-weight: bold; /* Make the heading bold */
-            color: #eb3a39; /* Set red color for the heading */
-            line-height: 1.2; /* Adjust line height for the heading */
+            font-size: 48px;
+            font-weight: bold;
+            color: #E7717D;
+            line-height: 1.2;
         }
 
-        /* Form styling */
         form {
-            margin-bottom: 20px; /* Add bottom margin for form */
+            margin-bottom: 20px;
         }
 
-        /* Styling for unordered lists */
         ul {
-            list-style: none; /* Remove default list styles */
-            padding: 0; /* Remove padding from the list */
+            list-style: none;
+            padding: 0;
         }
 
-        /* Styling for each list item (recipe) */
         li {
-            display: inline-block; /* Display list items inline */
-            text-align: center; /* Center-align content in the list items */
-            margin: 10px; /* Add margin around each list item */
-            width: 200px; /* Set fixed width for each list item */
+            display: inline-block;
+            text-align: center;
+            margin: 10px;
+            width: 200px;
         }
 
-        /* Recipe title styling */
         .recipe-title {
-            font-size: 22px; /* Set font size for recipe titles */
-            font-weight: 600; /* Make the title bold */
-            color: #6b6a39; /* Olive color for recipe titles */
+            font-size: 22px;
+            font-weight: 600;
+            color: #7E685A;
         }
 
-        /* Styling for images */
         img {
-            display: inline-block; /* Display image inline */
-            margin: 0 auto; /* Center the image */
-            max-width: 200px; /* Set max width for images */
+            display: inline-block;
+            margin: 0 auto;
+            max-width: 200px;
         }
 
-        /* Styling for links */
         a {
-            font-size: 18px; /* Font size for links */
-            font-weight: 500; /* Font weight for links */
-            color: #eb3a39; /* Red color for links */
-            text-decoration: underline; /* Underline links */
+            font-size: 18px;
+            font-weight: 500;
+            color: #E7717D; /* Pinkish red */
+            text-decoration: underline;
         }
 
-        /* Hover effect for links */
         a:hover {
-            background-color: #eb3a39; /* Red background on hover */
+            background-color: #AFD275;
         }
 
-        /* Styling for recipe details container */
         .recipe-details {
-            max-width: 600px; /* Set max width for recipe details */
-            margin: 0 auto; /* Center the container */
-            border: 2px solid #ccc; /* Border around the container */
-            padding: 20px; /* Padding inside the container */
+            max-width: 600px;
+            margin: 0 auto;
+            border: 2px solid #ccc;
+            padding: 20px;
         }
 
-        /* Styling for section titles */
         .section-title {
-            text-align: left; /* Align section titles to the left */
-            margin-bottom: 10px; /* Add space below section titles */
+            text-align: left;
+            margin-bottom: 10px;
         }
 
-        /* Label styling */
         label {
-            font-size: 22px; /* Font size for labels */
-            color: #eb3a39; /* Brighter red color for labels */
-            margin-bottom: 10px; /* Add space below labels */
-            display: inline-block; /* Display labels inline */
-            font-weight: bold; /* Make labels bold */
+            font-size: 22px;
+            color: #E7717D;
+            margin-bottom: 10px;
+            display: inline-block;
+            font-weight: bold;
         }
 
-        /* Styling for input text fields */
         input[type="text"] {
-            width: 70%; /* Set width of the text input field */
-            padding: 15px 20px; /* Add padding inside the input field */
-            font-size: 18px; /* Set font size for input text */
-            border: 2px solid #ccc; /* Border around input field */
-            border-radius: 10px; /* Round the corners of the input field */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow effect to input field */
-            margin-bottom: 20px; /* Add margin below input field */
+            width: 70%;
+            padding: 15px 20px;
+            font-size: 18px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
         }
 
-        /* Styling for submit button */
         input[type="submit"] {
-            padding: 12px 25px; /* Add padding inside the button */
-            font-size: 18px; /* Set font size for the button text */
-            color: white; /* Set text color to white */
-            background-color: #6b6a39; /* Olive green background color for the button */
-            border: none; /* Remove border around the button */
-            border-radius: 5px; /* Round corners of the button */
-            cursor: pointer; /* Change cursor to pointer on hover */
+            padding: 12px 25px;
+            font-size: 18px;
+            color: white;
+            background-color: #AFD275; /* Light green */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
-        /* Hover effect for submit button */
         input[type="submit"]:hover {
-            background-color: #5a5a30; /* Darker olive green on hover */
+            background-color: #7E685A; /* Brownish taupe */
         }
-
     </style>
+
 </head>
 <body>
     <!-- Main Heading -->
