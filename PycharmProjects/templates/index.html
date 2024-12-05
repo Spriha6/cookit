@@ -117,12 +117,67 @@
         input[type="submit"]:hover {
             background-color: #7E685A; /* Brownish taupe */
         }
+
+         .navbar {
+            display: flex;
+            justify-content: space-between; /* Align items on the left and right */
+            align-items: center; /* Vertically center the content */
+            background-color: #E7717D;
+            padding: 10px 20px; /* Padding around the navbar */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        }
+
+        /* Styling for the navbar title */
+        .navbar-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px; /* Font size for the title */
+            font-weight: bold;
+            color: #ccc;
+            margin: 0;
+        }
+
+        /* Styling for the navbar list */
+        .navbar ul {
+            list-style: none; /* Remove default list styles */
+            display: flex; /* Display list items inline */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Styling for navbar list items */
+        .navbar li {
+            margin-left: 20px; /* Space between each link */
+        }
+
+        /* Styling for navbar links */
+        .navbar a {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 18px; /* Font size for links */
+            font-weight: 600; /* Slightly bolder links */
+            color: #7E685A; /* Brownish taupe */
+            text-decoration: none; /* Remove underline from links */
+        }
+
+        /* Hover effect for navbar links */
+        .navbar a:hover {
+            color: #AFD275; /* Light green color on hover */
+        }
+
     </style>
 
 </head>
 <body>
     <!-- Main Heading -->
     <h1>COOK IT!</h1>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-title">Cook It!</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
 
     <!-- Search form for entering ingredients -->
     <form method="POST" action="/">
