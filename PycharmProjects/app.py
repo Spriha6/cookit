@@ -1,12 +1,10 @@
 from flask import Flask, render_template, request
 import requests
 from urllib.parse import unquote
+from keys import API_KEY
 
 # Create the flask app
 app = Flask(__name__)
-
-# Removed the API Key for submission
-API_KEY = " "
 
 # Define the route for the "Home" button
 @app.route('/home', methods=['GET'])
